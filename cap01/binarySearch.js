@@ -33,10 +33,32 @@ function binarySearch(orderedArray, item) {
     }
   }
 
-  return 'Number not found!'
+  return 'Item not found!'
+}
+
+function recursiveBinarySearch(
+  orderedArray,
+  item,
+  low = 0,
+  high = orderedArray.length - 1
+) {
+  if (low > high) return 'Item not found!'
+
+  let mid = Math.ceil((low + high) / 2)
+  let guess = orderedArray[mid]
+
+  if (guess === item) return mid
+
+  if (guess > item)
+    return recursiveBinarySearch(orderedArray, item, low, mid - 1)
+
+  if (guess < item)
+    return recursiveBinarySearch(orderedArray, item, mid + 1, high)
 }
 
 const orderedArray = Array.from({ length: 100 }, (v, k) => k)
+
+console.log('----------- Iterative approach -----------')
 console.log(`index: ${binarySearch(orderedArray, 42)}`)
 console.log(`index: ${binarySearch(orderedArray, 100)}`)
 
@@ -45,6 +67,20 @@ console.log(
 )
 console.log(
   `index: ${binarySearch(
+    [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+    100
+  )}`
+)
+
+console.log('----------- Recursive approach -----------')
+console.log(`index: ${recursiveBinarySearch(orderedArray, 42)}`)
+console.log(`index: ${recursiveBinarySearch(orderedArray, 100)}`)
+
+console.log(
+  `index: ${recursiveBinarySearch([1, 5, 15, 21, 30, 120, 125, 130, 199], 30)}`
+)
+console.log(
+  `index: ${recursiveBinarySearch(
     [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
     100
   )}`
