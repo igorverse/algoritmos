@@ -13,7 +13,7 @@ graph['jonny'] = []
 
 
 // O(v + e) time complexity and O(v) space complexity
-function depthFirstSearch(graph, person){
+function breadthFirstSearch(graph, person){
   const deque = new Deque()
   const wasPersonSeen = {}
 
@@ -44,4 +44,4 @@ function isSeller(person) {
   return false
 }
 
-console.log(depthFirstSearch(graph, graph['you']))
+console.log(breadthFirstSearch(graph, graph['you']))
