@@ -1,7 +1,7 @@
 function shortestPath(edges, source, destiny) {
   const graph = buildGraph(edges)
 
-  const visitedNodes = new Set()
+  const visitedNodes = new Set([source])
   const queue = [[source, 0]]
 
 

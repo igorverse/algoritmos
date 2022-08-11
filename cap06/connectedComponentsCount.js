@@ -3,11 +3,7 @@ function connectedComponentsCount(graph) {
   let count = 0
 
   for (let node in graph) {
-    if (explore(graph, Number(node), visited)) {
-      count++
-    }
-
-    console.log(visited)
+    if (explore(graph, Number(node), visited)) count++
   }
 
   return count

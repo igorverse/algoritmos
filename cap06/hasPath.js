@@ -1,17 +1,23 @@
 function hasPath(graph, source, destiny) {
-	const wasAlreadySeen = new Set()
 	const stack = [source]
 
 	while (stack.length) {
 		const currentNode = stack.pop()
-		if (wasAlreadySeen[currentNode]) continue
 		if (currentNode === destiny) return true
 
 		for (const neighbor of graph[currentNode]) {
 			stack.push(neighbor)
 		}
-		
-		wasAlreadySeen.add(currentNode)
+	}
+
+	return false
+}
+
+function recursiveHasPath(graph, source, destiny) {
+	if (source === destiny) return true
+
+	for (const neighbor of graph[source]) {
+		if (recursiveHasPath(graph, neighbor, destiny)) return true
 	}
 
 	return false
@@ -28,3 +34,5 @@ const graph = {
 
 console.log(hasPath(graph, 'f', 'k'))
 console.log(hasPath(graph, 'f', 'u'))
+console.log(recursiveHasPath(graph, 'f', 'k'))
+console.log(recursiveHasPath(graph, 'f', 'u'))

@@ -1,5 +1,5 @@
 function islandCount(grid) {
-  const visitedNodes = {}
+  const visitedNodes = new Set()
   let islandCounter = 0
   for (let row = 0; row < grid.length; row++) {
     for (let column = 0; column < grid[0].length; column++) {
