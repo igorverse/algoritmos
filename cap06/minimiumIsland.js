@@ -16,7 +16,7 @@ function exploreIslandSize(grid, row, column, visited = new Set()) {
   const isRowInbounds = 0 <= row && row < grid.length
   const isColumnInbouds = 0 <= column && column < grid[0].length
 
-  if (!isRowInbounds || isColumnInbouds) return 0
+  if (!isRowInbounds || !isColumnInbouds) return 0
   if (grid[row][column] === 'W') return 0
 
   const position = row + ',' + column
